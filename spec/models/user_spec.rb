@@ -17,5 +17,9 @@ RSpec.describe User, type: :model do
       User.create(email: 'theaustinmunro@gmail.com')
       expect(User.all.length).to eq(1)
     end
+
+    it 'should require email address' do
+      expect{User.create(email: '').validate_email}.to raise_error('InvalidEmailAddress')
+    end
   end
 end
